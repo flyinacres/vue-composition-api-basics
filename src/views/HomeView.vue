@@ -8,8 +8,8 @@
   <button class="btn" @click="decreaseCounter(1)">-</button>
   <button class="btn" @click="decreaseCounter(2)">--</button>
   <span class="counter">{{ counterData.count }}</span>
-  <button class="btn" @click="increaseCounter(1, $event)">+</button>
-  <button class="btn" @click="increaseCounter(2, $event)">++</button>
+  <button class="btn" @click="increaseCounter(1)">+</button>
+  <button class="btn" @click="increaseCounter(2)">++</button>
   </div>
 
   <p>This counter is: {{ oddOrEven }}</p>
@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { reactive, computed, watch } from 'vue'
 
 const appTitle = 'My Amazing Counter App'
 
@@ -31,12 +31,17 @@ const counterData = reactive({
     title: 'My Counter'
   })
 
-const oddOrEven =computed(() => {
+watch(() => counterData.count, (newCount, oldCount) => {
+  if (newCount === 20) {
+    alert('Way to go, you made it to 20')
+  }
+})
+
+const oddOrEven = computed(() => {
   return counterData.count % 2 ? 'odd' : 'even'
 })
 
-const increaseCounter = (amount, e) => {
-  console.log(e)
+const increaseCounter = (amount) => {
   counterData.count += amount
 }
 
