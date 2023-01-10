@@ -6,7 +6,13 @@
     <RouterLink to="/about">About</RouterLink>
   </nav>
 
-  <RouterView />
+  <!-- vue 3 way of 'keeping a route alive' -->
+  <RouterView v-slot="{ Component }">
+    <KeepAlive>
+      <component :is="Component" />
+    </KeepAlive>
+  </RouterView>
+
 </template>
 
 <style scoped>

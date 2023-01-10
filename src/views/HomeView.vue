@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { reactive, computed, watch } from 'vue'
+import { reactive, computed, watch, onBeforeMount, onActivated, onDeactivated } from 'vue'
 
 const appTitle = 'My Amazing Counter App'
 
@@ -48,6 +48,19 @@ const increaseCounter = (amount) => {
 const decreaseCounter = (amount) => {
   counterData.count-=amount
 }
+
+onBeforeMount(() => {
+  console.log('Before mounting')
+})
+
+onActivated(() => {
+  console.log('on activated')
+})
+
+onDeactivated(() => {
+  console.log('on deactivated')
+})
+
 </script>
 
 <style>
