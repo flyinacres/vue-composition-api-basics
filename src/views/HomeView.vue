@@ -2,7 +2,7 @@
 
 <template>
 <div class="home">
-<h2>{{ appTitle }}</h2>
+<h2 ref="appTitleRef">{{ appTitle }}</h2>
   <h3> {{ counterData.title }}:</h3>
   <div>
   <button class="btn" @click="decreaseCounter(1)">-</button>
@@ -22,10 +22,18 @@
 </template>
 
 <script setup>
-import { reactive, computed, watch} from 'vue'
+import { ref, reactive, computed, watch, onMounted} from 'vue'
 import { vAutofocus } from '@/directives/vAutofocus'
 
 const appTitle = 'My Amazing Counter App'
+
+/* seems strange, but this is how to get access to the ref...
+    make sure that the name is identical */
+const appTitleRef = ref(null)
+
+onMounted(() => {
+  console.log(appTitleRef.value.offsetWidth)
+})
 
 const counterData = reactive({
     count: 0,
@@ -49,7 +57,6 @@ const increaseCounter = (amount) => {
 const decreaseCounter = (amount) => {
   counterData.count-=amount
 }
-
 
 </script>
 
