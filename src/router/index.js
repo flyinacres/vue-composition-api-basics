@@ -10,6 +10,11 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/modals',
+      name: 'modals',
+      component: () => import('../views/ModalsView.vue')
+    },
+    {
       path: '/post',
       name: 'post',
       // route level code-splitting

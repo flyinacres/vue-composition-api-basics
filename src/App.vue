@@ -4,6 +4,7 @@
   <nav>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/post">Post</RouterLink>
+        <RouterLink to="/modals">Modals</RouterLink>
   </nav>
 
 
