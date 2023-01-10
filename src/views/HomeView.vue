@@ -16,13 +16,14 @@
 
   <div class="edit">
     <h4>Edit counter title:</h4>
-    <input v-autoFocus v-model="counterData.title" type="text">
+    <input v-autofocus v-model="counterData.title" type="text">
   </div>
 </div>
 </template>
 
 <script setup>
 import { reactive, computed, watch} from 'vue'
+import { vAutofocus } from '@/directives/vAutofocus'
 
 const appTitle = 'My Amazing Counter App'
 
@@ -47,14 +48,6 @@ const increaseCounter = (amount) => {
 
 const decreaseCounter = (amount) => {
   counterData.count-=amount
-}
-
-/* must be camelcase, starting with v */
-const vAutoFocus = {
-  /* Can use any of the lifecycle hooks */
-  mounted: (el) => {
-    el.focus()
-  }
 }
 
 
