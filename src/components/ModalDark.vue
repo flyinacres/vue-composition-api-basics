@@ -1,7 +1,7 @@
 <template>
     <teleport to=".modals-container">
         <div v-if="modelValue"
-            class="modal">
+            class="modal-dark">
             <h1>{{ title }}
             </h1>
             <slot />
@@ -33,8 +33,9 @@
 
 
 <style>
-.modal {
-    background: beige;
+.modal-dark {
+    background: #333;
+    color: white;
     padding: 10px;
     position: absolute;
     left: 0;
