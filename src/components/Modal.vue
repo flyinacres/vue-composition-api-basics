@@ -5,7 +5,7 @@
             <h1>{{ title }}
             </h1>
             <slot />
-            <button @click="handleButtonClick">Hide modal</button>
+            <button @click="$emit('update:modelValue', false)">Hide modal</button>
 
         </div>
     </teleport>
@@ -25,11 +25,13 @@
     }
     })
 
-    const emit = defineEmits(['hideModal'])
+    const emit = defineEmits(['update:modelValue'])
 
+/* One way of more directly changing the value, although I prefer a custom event...
     const handleButtonClick = () => {
-        emit('hideModal')
+        emit('update:modelValue', false)
     }
+*/
 
 /* If I want to access the props programmatically I would need to use props.title, not just title */
 </script>
