@@ -22,44 +22,21 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch, onMounted, nextTick} from 'vue'
+import { ref, onMounted } from 'vue'
 import { vAutofocus } from '@/directives/vAutofocus'
+import { useCounter } from '@/use/useCounter'
 
 const appTitle = 'My Amazing Counter App'
+const {counterData, oddOrEven, increaseCounter, decreaseCounter} = useCounter()
 
 /* seems strange, but this is how to get access to the ref...
     make sure that the name is identical */
 const appTitleRef = ref(null)
 
+
 onMounted(() => {
   console.log(appTitleRef.value.offsetWidth)
 })
-
-const counterData = reactive({
-    count: 0,
-    title: 'My Counter'
-  })
-
-watch(() => counterData.count, (newCount, oldCount) => {
-  if (newCount === 20) {
-    alert('Way to go, you made it to 20')
-  }
-})
-
-const oddOrEven = computed(() => {
-  return counterData.count % 2 ? 'odd' : 'even'
-})
-
-const increaseCounter = (amount) => {
-  counterData.count += amount
-  nextTick(() => {
-    console.log('do something now')
-  })
-}
-
-const decreaseCounter = (amount) => {
-  counterData.count-=amount
-}
 
 </script>
 
