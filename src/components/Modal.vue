@@ -6,7 +6,7 @@
             </h1>
             <slot />
             <button @click="$emit('update:modelValue', false)">Hide modal</button>
-
+            <div>Username is: {{userData.username}}</div>
         </div>
     </teleport>
 </template>
@@ -22,6 +22,9 @@
     title: {
         type: String,
         default: 'No title specified'
+    },
+    userData: {
+        type: Object
     }
     })
 
