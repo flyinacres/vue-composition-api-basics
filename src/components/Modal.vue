@@ -1,6 +1,6 @@
 <template>
     <teleport to=".modals-container">
-        <div 
+        <div v-if="modelValue"
             class="modal">
             <h1>{{ title }}
             </h1>
@@ -15,6 +15,10 @@
 <script setup>
     // For some reason I don't have to import this in vue.
     const props = defineProps({
+    modelValue: {
+        type: Boolean,
+        default: false
+    },
     title: {
         type: String,
         default: 'No title specified'
