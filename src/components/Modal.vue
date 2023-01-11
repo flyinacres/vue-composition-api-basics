@@ -6,13 +6,15 @@
             </h1>
             <slot />
             <button @click="$emit('update:modelValue', false)">Hide modal</button>
-            <div>Username is: {{userData.username}}</div>
+            <div>Username is {{userData.username}}</div>
         </div>
     </teleport>
 </template>
 
 
 <script setup>
+    import {inject} from 'vue'
+
     // For some reason I don't have to import this in vue.
     const props = defineProps({
     modelValue: {
@@ -22,13 +24,13 @@
     title: {
         type: String,
         default: 'No title specified'
-    },
-    userData: {
-        type: Object
     }
     })
 
     const emit = defineEmits(['update:modelValue'])
+
+    // Gets global data
+    const userData = inject('userData');
 
 /* If I want to access the props programmatically I would need to use props.title, not just title */
 </script>

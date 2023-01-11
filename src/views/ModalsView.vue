@@ -6,7 +6,7 @@
             <input v-model="showDarkModals" type="checkbox"/>
         </div>
         <button @click="showModal = true">Show Modal</button>
-        <component :userData="userData"
+        <component 
             :is="showDarkModals ? ModalDark : Modal" 
             v-model="showModal"
             title="My modal title (via prop)">
@@ -22,9 +22,6 @@ import Modal from '@/components/Modal.vue'
 import ModalDark from '@/components/ModalDark.vue'
 import {ref} from 'vue'
 
-const props = defineProps({
-    userData: {type: Object}
-})
 
 const showDarkModals = ref(false)
 

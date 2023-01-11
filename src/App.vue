@@ -13,17 +13,19 @@
 
 
   
-  <RouterView :userData="userData"/>
+  <RouterView/>
 
 </template>
 
 <script setup>
-import {reactive} from 'vue'
+import {reactive, provide} from 'vue'
 
 const userData = reactive({
   name: 'Ron',
   username: 'ron'
 })
+
+provide("userData", userData)
 
 </script>
 
